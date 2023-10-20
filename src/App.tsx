@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { LexicalComposer } from "@lexical/react/LexicalComposer";
+import { ContentEditable } from "@lexical/react/LexicalContentEditable";
+import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
+import { PlainTextPlugin } from "@lexical/react/LexicalPlainTextPlugin";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+type KeyVal = { [key: string]: string };
+type Theme = { [key: string]: string | KeyVal };
+const theme: Theme = {};
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+function onError(error: Error): void {
+  console.error(error);
 }
 
-export default App
+type Config = {
+  namespace: string;
+  theme: Theme;
+  onError: (error: Error) => void;
+};
+
+function App() {
+  const initialConfig: Config = {
+    namespace: "MyEditor",
+    theme,
+    onError,
+  };
+
+  type PlaceholderProps = {
+    className: string;
+    children: string;
+  };
+
+  function Placeholder({ className, children }: PlaceholderProps): JSX.Element {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <div className="content-editable-wrapper">
+      <LexicalComposer initialConfig={initialConfig}>
+        <PlainTextPlugin
+          contentEditable={<ContentEditable className="content-editable" />}
+          placeholder={
+            <Placeholder className="content-editable-placeholder">Enter some text...</Placeholder>
+          }
+          ErrorBoundary={LexicalErrorBoundary}
+        />
+      </LexicalComposer>
+    </div>
+  );
+}
+
+export default App;
