@@ -1,0 +1,15 @@
+.editor-container {
+  position: relative;
+}
+
+.editor {
+  border: inset 1px;
+  padding-left: 1em;
+  height: 320px;
+}
+
+.editor-placeholder {
+  position: absolute;
+  top: 0;
+  left: 1rem;
+}

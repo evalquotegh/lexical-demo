@@ -2,19 +2,3 @@
   width: 100%;
   padding: 2rem;
 }
-
-.content-editable-wrapper {
-  position: relative;
-}
-
-.content-editable {
-  border: inset 1px;
-  padding-left: 1em;
-  height: 320px;
-}
-
-.content-editable-placeholder {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-}
