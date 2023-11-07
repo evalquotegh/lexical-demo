@@ -26,15 +26,13 @@ function Editor() {
   return (
     <LexicalComposer initialConfig={config}>
       <HorizontalRulePlugin />
-      <div className="editor-container">
-        <RichTextPlugin
-          contentEditable={<ContentEditable className="editor" />}
-          placeholder={<Placeholder />}
-          ErrorBoundary={LexicalErrorBoundary}
-        />
-        <TreeViewPlugin />
-        <MyOnChangePlugin onChange={onChange} />
-      </div>
+      <RichTextPlugin
+        contentEditable={<ContentEditable className="editor" />}
+        placeholder={<Placeholder />}
+        ErrorBoundary={LexicalErrorBoundary}
+      />
+      <TreeViewPlugin />
+      <MyOnChangePlugin onChange={onChange} />
     </LexicalComposer>
   );
 }

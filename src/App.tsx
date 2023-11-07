@@ -3,7 +3,11 @@ import Editor from "./editor/Editor";
 import "./App.css";
 
 function App() {
-  return <Editor />;
+  return (
+    <div className="editor-container">
+      <Editor />;
+    </div>
+  );
 }
 
 export default App;
