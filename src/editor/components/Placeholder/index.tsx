@@ -1,4 +1,4 @@
-import "./Placeholder.css";
+import "./index.css";
 
 type PlaceholderProps = {
   className?: string;

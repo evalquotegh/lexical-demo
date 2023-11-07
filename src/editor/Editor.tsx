@@ -9,6 +9,7 @@ import "./Editor.css";
 import Placeholder from "./components/Placeholder";
 import { config } from "./config";
 import { MyOnChangePlugin } from "./plugins/MyOnChangePlugin";
+import TreeViewPlugin from "./plugins/TreeViewPlugin";
 
 function Editor() {
   const [_, setEditorState] = useState({});
@@ -30,6 +31,7 @@ function Editor() {
           ErrorBoundary={LexicalErrorBoundary}
         />
         <MyOnChangePlugin onChange={onChange} />
+        <TreeViewPlugin />
       </div>
     </LexicalComposer>
   );
