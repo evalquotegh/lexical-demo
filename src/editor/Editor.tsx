@@ -8,7 +8,8 @@ import { useState } from "react";
 import "./Editor.css";
 import Placeholder from "./components/Placeholder";
 import { config } from "./config";
-import { MyOnChangePlugin } from "./plugins/MyOnChangePlugin";
+import HorizontalRulePlugin from "./plugins/HorizontalRulePlugin";
+import MyOnChangePlugin from "./plugins/MyOnChangePlugin";
 import TreeViewPlugin from "./plugins/TreeViewPlugin";
 
 function Editor() {
@@ -24,14 +25,15 @@ function Editor() {
 
   return (
     <LexicalComposer initialConfig={config}>
+      <HorizontalRulePlugin />
       <div className="editor-container">
         <RichTextPlugin
           contentEditable={<ContentEditable className="editor" />}
           placeholder={<Placeholder />}
           ErrorBoundary={LexicalErrorBoundary}
         />
-        <MyOnChangePlugin onChange={onChange} />
         <TreeViewPlugin />
+        <MyOnChangePlugin onChange={onChange} />
       </div>
     </LexicalComposer>
   );

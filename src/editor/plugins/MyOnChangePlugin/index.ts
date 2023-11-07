@@ -2,11 +2,11 @@ import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext
 import { EditorState } from "lexical";
 import { useEffect } from "react";
 
-export type OnChangeProps = (editorState: EditorState) => void;
-export type MyOnChangePluginProps = { onChange: OnChangeProps };
-export type RegisterUpdateListenerProps = { editorState: EditorState };
+type OnChangeProps = (editorState: EditorState) => void;
+type MyOnChangePluginProps = { onChange: OnChangeProps };
+type RegisterUpdateListenerProps = { editorState: EditorState };
 
-export function MyOnChangePlugin({ onChange }: MyOnChangePluginProps): null {
+function MyOnChangePlugin({ onChange }: MyOnChangePluginProps): null {
   const [editor] = useLexicalComposerContext();
 
   useEffect(() => {
@@ -19,3 +19,5 @@ export function MyOnChangePlugin({ onChange }: MyOnChangePluginProps): null {
 
   return null;
 }
+
+export default MyOnChangePlugin;
