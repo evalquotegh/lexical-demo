@@ -12,7 +12,7 @@ function BoldPlugin({ className, children }: BoldPluginProps): JSX.Element {
   const onBoldClick = () => editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold");
   return (
     <button className={className} onClick={onBoldClick}>
-      {children}
+      <strong>{children}</strong>
     </button>
   );
 }
