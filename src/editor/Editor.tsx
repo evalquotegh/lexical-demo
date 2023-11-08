@@ -8,7 +8,7 @@ import { useState } from "react";
 import "./Editor.css";
 import Placeholder from "./components/Placeholder";
 import { config } from "./config";
-import HorizontalRulePlugin from "./plugins/HorizontalRulePlugin";
+import BoldPlugin from "./plugins/BoldPlugin";
 import MyOnChangePlugin from "./plugins/MyOnChangePlugin";
 import TreeViewPlugin from "./plugins/TreeViewPlugin";
 
@@ -25,7 +25,7 @@ function Editor() {
 
   return (
     <LexicalComposer initialConfig={config}>
-      <HorizontalRulePlugin />
+      <BoldPlugin className="editor-bold">B</BoldPlugin>
       <RichTextPlugin
         contentEditable={<ContentEditable className="editor" />}
         placeholder={<Placeholder />}
