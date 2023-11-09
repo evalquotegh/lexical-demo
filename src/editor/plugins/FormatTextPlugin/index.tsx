@@ -2,24 +2,35 @@ import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext
 import { FORMAT_TEXT_COMMAND } from "lexical";
 import "./index.css";
 
-type FormatTextPluginProps = {
-  command:
-    | "bold"
-    | "italic"
-    | "underline"
-    | "strikethrough"
-    | "code"
-    | "subscript"
-    | "superscript";
+export const FormatTextCommands = [
+  "bold",
+  "italic",
+  "underline",
+  "strikethrough",
+  "code",
+  "subscript",
+  "superscript",
+];
+export type FormatTextCommand =
+  | (typeof FormatTextCommands)[0]
+  | (typeof FormatTextCommands)[1]
+  | (typeof FormatTextCommands)[2]
+  | (typeof FormatTextCommands)[3]
+  | (typeof FormatTextCommands)[4]
+  | (typeof FormatTextCommands)[5]
+  | (typeof FormatTextCommands)[6];
+export type FormatTextPluginProps = {
+  command: FormatTextCommand;
   className?: string;
   children?: string | JSX.Element;
 };
 
-function FormatTextPlugin({
+export function FormatTextPlugin({
   command,
   className,
   children,
 }: FormatTextPluginProps): JSX.Element {
+  console.log(command);
   if (!className) {
     className = `editor-${command}`;
   }
@@ -67,5 +78,3 @@ function FormatTextPlugin({
     </button>
   );
 }
-
-export default FormatTextPlugin;

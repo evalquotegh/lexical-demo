@@ -8,8 +8,8 @@ import { useState } from "react";
 import "./Editor.css";
 import Placeholder from "./components/Placeholder";
 import { config } from "./config";
-import FormatTextPlugin from "./plugins/FormatTextPlugin";
 import MyOnChangePlugin from "./plugins/MyOnChangePlugin";
+import ToolbarPlugin from "./plugins/ToolbarPlugin";
 import TreeViewPlugin from "./plugins/TreeViewPlugin";
 
 function Editor() {
@@ -25,13 +25,7 @@ function Editor() {
 
   return (
     <LexicalComposer initialConfig={config}>
-      <FormatTextPlugin command="bold" />
-      <FormatTextPlugin command="italic" />
-      <FormatTextPlugin command="underline" />
-      <FormatTextPlugin command="strikethrough" />
-      <FormatTextPlugin command="code" />
-      <FormatTextPlugin command="superscript" />
-      <FormatTextPlugin command="subscript" />
+      <ToolbarPlugin />
       <RichTextPlugin
         contentEditable={<ContentEditable className="editor" />}
         placeholder={<Placeholder />}
