@@ -1,6 +1,10 @@
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { HorizontalRulePlugin } from "@lexical/react/LexicalHorizontalRulePlugin";
 
+import {
+  FormatElementCommands,
+  FormatElementPlugin,
+} from "../FormatElementPlugin";
 import { FormatTextCommands, FormatTextPlugin } from "../FormatTextPlugin";
 import SeparatorPlugin from "../SeparatorPlugin";
 import UndoRedoPlugin, { UndoRedoTypes } from "../UndoRedoPlugin";
@@ -14,8 +18,11 @@ export default function ToolbarPlugin(): JSX.Element {
       {FormatTextCommands.map((command, i) => (
         <FormatTextPlugin command={command} key={i} />
       ))}
-      <SeparatorPlugin />
+      {FormatElementCommands.map((command, i) => (
+        <FormatElementPlugin command={command} key={i} />
+      ))}
 
+      <SeparatorPlugin />
       <HistoryPlugin />
       <HorizontalRulePlugin />
     </>
