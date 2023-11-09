@@ -2,29 +2,29 @@ import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext
 import { FORMAT_ELEMENT_COMMAND } from "lexical";
 import "./index.css";
 
-export const FormatElementCommands = ["left", "center", "right", "justify"];
-export type FormatElementCommand =
-  | (typeof FormatElementCommands)[0]
-  | (typeof FormatElementCommands)[1]
-  | (typeof FormatElementCommands)[2]
-  | (typeof FormatElementCommands)[3];
+export const FormatElementTypes = ["left", "center", "right", "justify"];
+export type FormatElementType =
+  | (typeof FormatElementTypes)[0]
+  | (typeof FormatElementTypes)[1]
+  | (typeof FormatElementTypes)[2]
+  | (typeof FormatElementTypes)[3];
 export type FormatElementPluginProps = {
-  command: FormatElementCommand;
+  type: FormatElementType;
   className?: string;
   children?: string | JSX.Element;
 };
 
 export function FormatElementPlugin({
-  command,
+  type,
   className,
   children,
 }: FormatElementPluginProps): JSX.Element {
   if (!className) {
-    className = `editor-${command}`;
+    className = `editor-${type}`;
   }
 
   if (!children) {
-    switch (command) {
+    switch (type) {
       case "left":
         children = <span>[- ]</span>;
         break;
@@ -42,7 +42,7 @@ export function FormatElementPlugin({
 
   const [editor] = useLexicalComposerContext();
   const onFormatElementClick = () =>
-    editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, command);
+    editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, type);
   return (
     <button className={className} onClick={onFormatElementClick}>
       <strong>{children}</strong>
