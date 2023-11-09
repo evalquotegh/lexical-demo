@@ -30,7 +30,6 @@ export function FormatTextPlugin({
   className,
   children,
 }: FormatTextPluginProps): JSX.Element {
-  console.log(command);
   if (!className) {
     className = `editor-${command}`;
   }
