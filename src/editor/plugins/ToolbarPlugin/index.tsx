@@ -1,6 +1,7 @@
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { HorizontalRulePlugin } from "@lexical/react/LexicalHorizontalRulePlugin";
 
+import ClearFormatPlugin from "../ClearFormatPlugin";
 import {
   FormatElementPlugin,
   FormatElementTypes,
@@ -27,6 +28,7 @@ export default function ToolbarPlugin(): JSX.Element {
       {IndentOutdentTypes.map((type, i) => (
         <IndentOutdentPlugin type={type} key={i} />
       ))}
+      <ClearFormatPlugin />
 
       <SeparatorPlugin />
       <HistoryPlugin />
