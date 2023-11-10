@@ -14,17 +14,17 @@ type TextSizeOptionProps = {
   label: string;
   value: TextSizeType;
 };
+type TextSizePluginProps = {
+  className?: string;
+  options?: TextSizeOptionProps[];
+};
 
-export function TextSizePlugin(): JSX.Element {
-  const options: TextSizeOptionProps[] = [
-    { label: "Title", value: "h1" },
-    { label: "Heading", value: "h2" },
-    { label: "Subheading", value: "h3" },
-    { label: "Body", value: "p" },
-  ];
-
-  const BODY = options[3].value;
-  const [option, setOption] = useState(BODY);
+export default function TextSizePlugin({
+  className = "editor-text-size",
+  options = [],
+}: TextSizePluginProps): JSX.Element {
+  const PARAGRAPH = "p";
+  const [option, setOption] = useState(PARAGRAPH);
   const [editor] = useLexicalComposerContext();
 
   useEffect(() => {
@@ -35,19 +35,20 @@ export function TextSizePlugin(): JSX.Element {
         $setBlocksType(
           selection,
           (): ElementNode =>
-            option === BODY
+            option === PARAGRAPH
               ? $createParagraphNode()
               : $createHeadingNode(option as HeadingTagType)
         );
       }
     });
-  }, [editor, option, BODY]);
+  }, [editor, option]);
 
   return (
     <select
+      className={className}
       value={option}
       onChange={({ target: { value } }) =>
-        setOption(value as SetStateAction<TextSizeType>)
+        setOption(value as SetStateAction<string>)
       }
     >
       {options.map((o, i) => (

@@ -12,13 +12,20 @@ import {
   IndentOutdentTypes,
 } from "../IndentOutdentPlugin";
 import { SeparatorPlugin } from "../SeparatorPlugin";
-import { TextSizePlugin } from "../TextSizePlugin";
+import TextSizePlugin from "../TextSizePlugin";
 import { UndoRedoPlugin, UndoRedoTypes } from "../UndoRedoPlugin";
 
 export default function ToolbarPlugin(): JSX.Element {
   return (
     <>
-      <TextSizePlugin />
+      <TextSizePlugin
+        options={[
+          { label: "Title", value: "h1" },
+          { label: "Heading", value: "h2" },
+          { label: "Subheading", value: "h3" },
+          { label: "Body", value: "p" },
+        ]}
+      />
       {UndoRedoTypes.map((type, i) => (
         <UndoRedoPlugin type={type} key={i} />
       ))}
