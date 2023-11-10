@@ -7,18 +7,18 @@ import {
 } from "lexical";
 import { useCallback } from "react";
 
-export type ClearFormatPluginProps = {
+type ClearFormatPluginProps = {
   className?: string;
   children?: string | JSX.Element;
 };
 
-export function ClearFormatPlugin({
+export default function ClearFormatPlugin({
   className = "editor-clear-format",
   children = "C",
 }: ClearFormatPluginProps): JSX.Element {
   const [editor] = useLexicalComposerContext();
 
-  const onClearFormatClick = useCallback(() => {
+  const onClearFormatClick = useCallback((): void => {
     editor.update(() => {
       const selection = $getSelection();
 
@@ -30,6 +30,7 @@ export function ClearFormatPlugin({
           }
         });
       }
+
       editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "left");
     });
   }, [editor]);

@@ -1,7 +1,7 @@
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { HorizontalRulePlugin } from "@lexical/react/LexicalHorizontalRulePlugin";
 
-import { ClearFormatPlugin } from "../ClearFormatPlugin";
+import ClearFormatPlugin from "../ClearFormatPlugin";
 import {
   FormatElementPlugin,
   FormatElementTypes,
