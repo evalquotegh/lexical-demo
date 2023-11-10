@@ -12,7 +12,7 @@ export type ClearFormatPluginProps = {
   children?: string | JSX.Element;
 };
 
-export default function ClearFormatPlugin({
+export function ClearFormatPlugin({
   className = "editor-clear-format",
   children = "C",
 }: ClearFormatPluginProps): JSX.Element {

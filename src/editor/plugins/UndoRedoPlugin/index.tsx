@@ -11,7 +11,7 @@ export type UndoRedoPluginProps = {
   children?: string | JSX.Element;
 };
 
-export default function UndoRedoPlugin({
+export function UndoRedoPlugin({
   type,
   className,
   children,

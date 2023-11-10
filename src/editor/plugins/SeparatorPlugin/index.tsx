@@ -6,7 +6,7 @@ export type SeparatorPluginProps = {
   children?: string | JSX.Element;
 };
 
-export default function SeparatorPlugin({
+export function SeparatorPlugin({
   className = "editor-separator",
   children = "—",
 }: SeparatorPluginProps): JSX.Element {

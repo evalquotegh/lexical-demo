@@ -15,7 +15,7 @@ export type IndentOutdentPluginProps = {
   children?: string | JSX.Element;
 };
 
-export default function IndentOutdentPlugin({
+export function IndentOutdentPlugin({
   type,
   className,
   children,

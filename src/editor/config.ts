@@ -1,4 +1,5 @@
 import { HorizontalRuleNode } from "@lexical/react/LexicalHorizontalRuleNode";
+import { HeadingNode } from "@lexical/rich-text";
 import { ThemeProps, theme } from "./theme";
 import { ErrorProps, onError } from "./utils/onError";
 
@@ -13,5 +14,5 @@ export const config: ConfigProps = {
   namespace: "MyEditor",
   theme,
   onError,
-  nodes: [HorizontalRuleNode],
+  nodes: [HeadingNode, HorizontalRuleNode],
 };
