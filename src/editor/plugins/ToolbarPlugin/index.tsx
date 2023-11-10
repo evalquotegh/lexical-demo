@@ -18,14 +18,7 @@ import { UndoRedoPlugin, UndoRedoTypes } from "../UndoRedoPlugin";
 export default function ToolbarPlugin(): JSX.Element {
   return (
     <>
-      <TextSizePlugin
-        options={[
-          { label: "Title", value: "h1" },
-          { label: "Heading", value: "h2" },
-          { label: "Subheading", value: "h3" },
-          { label: "Body", value: "p" },
-        ]}
-      />
+      <TextSizePlugin />
       {UndoRedoTypes.map((type, i) => (
         <UndoRedoPlugin type={type} key={i} />
       ))}

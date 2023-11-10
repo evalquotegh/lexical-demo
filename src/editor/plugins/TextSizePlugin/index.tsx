@@ -21,7 +21,12 @@ type TextSizePluginProps = {
 
 export default function TextSizePlugin({
   className = "editor-text-size",
-  options = [],
+  options = [
+    { label: "Title", value: "h1" },
+    { label: "Heading", value: "h2" },
+    { label: "Subheading", value: "h3" },
+    { label: "Body", value: "p" },
+  ],
 }: TextSizePluginProps): JSX.Element {
   const PARAGRAPH = "p";
   const [option, setOption] = useState(PARAGRAPH);
