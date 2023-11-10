@@ -9,12 +9,12 @@ import { useCallback } from "react";
 
 type ClearFormatPluginProps = {
   className?: string;
-  children?: string | JSX.Element;
+  label?: string | JSX.Element;
 };
 
 export default function ClearFormatPlugin({
   className = "editor-clear-format",
-  children = "C",
+  label = "C",
 }: ClearFormatPluginProps): JSX.Element {
   const [editor] = useLexicalComposerContext();
 
@@ -37,7 +37,7 @@ export default function ClearFormatPlugin({
 
   return (
     <button className={className} onClick={onClearFormatClick}>
-      {children}
+      {label}
     </button>
   );
 }
