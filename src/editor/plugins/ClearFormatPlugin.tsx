@@ -9,15 +9,14 @@ import { useCallback } from "react";
 
 type ClearFormatPluginProps = {
   className?: string;
-  label?: string | JSX.Element;
+  icon?: JSX.Element;
 };
 
 export default function ClearFormatPlugin({
   className = "editor-clear-format",
-  label = "C",
+  icon = <span>C</span>,
 }: ClearFormatPluginProps): JSX.Element {
   const [editor] = useLexicalComposerContext();
-
   const onClearFormatClick = useCallback((): void => {
     editor.update(() => {
       const selection = $getSelection();
@@ -25,19 +24,19 @@ export default function ClearFormatPlugin({
       if ($isRangeSelection(selection)) {
         selection.getNodes().forEach((node) => {
           if ($isTextNode(node)) {
-            node.setFormat(0);
-            node.setStyle("");
+            node.setFormat(0); // remove all command formatting
+            node.setStyle(""); // remove all element styling
           }
         });
       }
 
-      editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "left");
+      editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "left"); // align selection towards left
     });
   }, [editor]);
 
   return (
     <button className={className} onClick={onClearFormatClick}>
-      {label}
+      {icon}
     </button>
   );
 }

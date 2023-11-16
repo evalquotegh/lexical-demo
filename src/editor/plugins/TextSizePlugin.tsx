@@ -32,8 +32,8 @@ export default function TextSizePlugin({
   const [option, setOption] = useState(PARAGRAPH);
   const [editor] = useLexicalComposerContext();
 
-  useEffect(() => {
-    editor.update(() => {
+  useEffect((): void => {
+    editor.update((): void => {
       const selection = $getSelection();
 
       if ($isRangeSelection(selection)) {
@@ -52,15 +52,17 @@ export default function TextSizePlugin({
     <select
       className={className}
       value={option}
-      onChange={({ target: { value } }) =>
+      onChange={({ target: { value } }): void =>
         setOption(value as SetStateAction<string>)
       }
     >
-      {options.map((o, i) => (
-        <option value={o.value} key={i}>
-          {o.label}
-        </option>
-      ))}
+      {options.map(
+        (textSize: TextSizeOptionProps, index: number): JSX.Element => (
+          <option value={textSize.value} key={index}>
+            {textSize.label}
+          </option>
+        )
+      )}
     </select>
   );
 }
